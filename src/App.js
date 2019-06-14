@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {petition} from './services/Petition';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
+
+  componentDidMount() {
+    this.fetchPetition();
+  }
+
+  fetchPetition() {
+    petition()
+    .then(data => {
+      console.log('*', data.results);
+        return fetch(`https://pokeapi.co/api/v2/pokemon/1/`);
+    })
+    .then(pokInfo => pokInfo.json())
+    .then(pokData => {
+      console.log('**', pokData);
+    })
+  }
+
+  render() {
+    return (
+      <div className="app">
+        'holi'
+      </div>
+    );
+  }
 }
 
 export default App;
