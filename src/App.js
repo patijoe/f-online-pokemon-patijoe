@@ -1,11 +1,21 @@
 import React from 'react';
 import './App.css';
-import {petition} from './services/Petition';
+import Pokemons from './components/Pokemons';
+import FilterName from './components/FilterName';
+import { petition } from './services/Petition';
+
+const ENDPOINT = 'https://pokeapi.co/api/v2/pokemon?limit=25';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      pokeInfo: [],
+      filterName:'bul'
+    }
+
+    this.handleFilterName = this.handleFilterName.bind(this);
   }
 
   componentDidMount() {
@@ -13,21 +23,37 @@ class App extends React.Component {
   }
 
   fetchPetition() {
-    petition()
+    petition(ENDPOINT)
     .then(data => {
-      console.log('*', data.results);
-        return fetch(`https://pokeapi.co/api/v2/pokemon/1/`);
+      const promises = data.results.map(item => petition(item.url));
+      return Promise.all(promises);
     })
-    .then(pokInfo => pokInfo.json())
-    .then(pokData => {
-      console.log('**', pokData);
+    .then(results => {
+      console.log('----->>>>', results);
+      this.setState({
+        pokeInfo: results
+      })
+    });
+  }
+
+  handleFilterName(event) {
+    const valueName = event.currentTarget.value;
+    console.log('^^', valueName);
+
+    this.setState({
+      filterName: valueName
     })
   }
 
   render() {
+    const {pokeInfo, filterName} = this.state;
     return (
       <div className="app">
-        'holi'
+        'hola'
+        {/* <FilterName 
+          handleFilterName={this.handleFilterName} 
+          filterName={filterName} />
+        <Pokemons pokeInfo={pokeInfo}/> */}
       </div>
     );
   }
