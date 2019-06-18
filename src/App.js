@@ -1,5 +1,4 @@
 import React from 'react';
-// import './App.css';
 import Pokemons from './components/Pokemons';
 import FilterName from './components/FilterName';
 import { petition } from './services/Petition';
@@ -49,11 +48,13 @@ class App extends React.Component {
     const {pokeInfo, filterName} = this.state;
     return (
       <div className="app">
-
-        {/* <FilterName 
+        <FilterName 
           handleFilterName={this.handleFilterName} 
-          filterName={filterName} /> */}
-        <Pokemons pokeInfo={pokeInfo}/>
+        />
+        <Pokemons 
+          pokeInfo={pokeInfo}
+          filterName={filterName}
+        />
       </div>
     );
   }

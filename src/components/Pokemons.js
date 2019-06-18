@@ -2,11 +2,13 @@ import React from 'react';
 
 class Pokemons extends React.Component {
   render() {
-    const {pokeInfo} = this.props;
+    const {pokeInfo, filterName} = this.props;
 
     return(
       <ul className="pokeList">
-          {pokeInfo.map(item => {
+          {pokeInfo
+          .filter(item => item.name.includes(filterName))
+          .map(item => {
             return(
               <li className="item" key={item.id}>
                 <div className="item__img" style={{backgroundImage: `url(${item.sprites.front_default})`}}></div>
