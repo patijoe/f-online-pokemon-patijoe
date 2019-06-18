@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+// import './App.css';
 import Pokemons from './components/Pokemons';
 import FilterName from './components/FilterName';
 import { petition } from './services/Petition';
@@ -12,7 +12,7 @@ class App extends React.Component {
 
     this.state = {
       pokeInfo: [],
-      filterName:'bul'
+      filterName:''
     }
 
     this.handleFilterName = this.handleFilterName.bind(this);
@@ -49,11 +49,11 @@ class App extends React.Component {
     const {pokeInfo, filterName} = this.state;
     return (
       <div className="app">
-        'hola'
+
         {/* <FilterName 
           handleFilterName={this.handleFilterName} 
-          filterName={filterName} />
-        <Pokemons pokeInfo={pokeInfo}/> */}
+          filterName={filterName} /> */}
+        <Pokemons pokeInfo={pokeInfo}/>
       </div>
     );
   }

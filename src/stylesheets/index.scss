@@ -1,0 +1,12 @@
+@import './pokemos';
+
+html{
+  margin: 0;
+  background-color: yellow;
+}
+
+.app{
+  display: flex;
+  flex-wrap: wrap;
+  
+}

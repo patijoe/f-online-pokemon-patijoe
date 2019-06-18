@@ -1,0 +1,50 @@
+.pokeList{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  justify-content: center;
+}
+
+.item{
+  height: 250px;
+  width: 250px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.item__img {
+  width: 250px;
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  background-color: silver;
+}
+
+.item__down{
+  background-color: aliceblue;
+}
+
+.item__name{
+  font-family: 'Swanky and Moo Moo', cursive;
+  font-size: 35px;
+  margin: 0;
+  text-align: center;
+}
+
+.item__types__list{
+  list-style: none;
+  display: flex;
+  padding: 0;
+  justify-content: space-around;
+}
+
+.type{
+  font-family: 'Swanky and Moo Moo', cursive;
+  font-size: 20px;
+  margin: 0;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 0 10px;
+}
