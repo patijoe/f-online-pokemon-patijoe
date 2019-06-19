@@ -9,9 +9,14 @@
 .item{
   height: 250px;
   width: 250px;
-  border: 1px solid grey;
+  border: 2px solid grey;
   border-radius: 5px;
   margin: 10px;
+  &:hover {
+    box-shadow: (-2px 3px 10px 0 rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(5px 5px 10px rgb(156, 154, 154));
+    transition: 0.5s;
+  }
 }
 
 .item__img {
@@ -24,6 +29,7 @@
 
 .item__down{
   background-color: aliceblue;
+  height: 90px;
 }
 
 .item__name{

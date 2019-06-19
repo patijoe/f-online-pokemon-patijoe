@@ -1,0 +1,30 @@
+.filter-name{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media all and (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.filter__label{
+  font-family: 'Swanky and Moo Moo', cursive;
+  font-size: 35px;
+  padding: 20px 0;
+
+  @media all and (min-width: 768px) {
+    padding: 20px 50px;
+  }
+}
+
+#filterName{
+  width: 180px;
+  height: 30px;
+  margin: 0 0 20px;
+
+  @media all and (min-width: 768px) {
+    transform: translateY(25%);
+  }
+}

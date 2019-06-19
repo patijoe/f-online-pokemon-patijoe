@@ -5,7 +5,7 @@ class FilterName extends React.Component {
     const {handleFilterName} = this.props;
     return(
       <div className="filter-name">
-        <label htmlFor="filterName">Filtra por nombre</label>
+        <label htmlFor="filterName" className="filter__label">Filtra por nombre</label>
         <input type="text" id="filterName" onChange={handleFilterName}/>
       </div>
     );
