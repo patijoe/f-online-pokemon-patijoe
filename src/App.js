@@ -1,7 +1,9 @@
 import React from 'react';
-import Pokemons from './components/Pokemons';
-import FilterName from './components/FilterName';
+import Home from './components/Home';
+// import Pokemons from './components/Pokemons';
+// import FilterName from './components/FilterName';
 import { petition } from './services/Petition';
+import { Route, Switch } from 'react-router-dom';
 
 const ENDPOINT = 'https://pokeapi.co/api/v2/pokemon?limit=25';
 
@@ -25,12 +27,24 @@ class App extends React.Component {
     petition(ENDPOINT)
     .then(data => {
       const promises = data.results.map(item => petition(item.url));
+      console.log('*', data);
       return Promise.all(promises);
     })
+    // .then(results => {
+    //   console.log('----->>>>', results, results[0].species);
+    //   this.setState({
+    //     pokeInfo: results
+    //   })
+    // });
     .then(results => {
       console.log('----->>>>', results);
+      const miracles = results.map(item => petition(item.species.url));
+      return Promise.all(miracles);
+    })
+    .then(resp =>{
+      console.log('->', resp);
       this.setState({
-        pokeInfo: results
+        pokeInfo: resp
       })
     });
   }
@@ -46,16 +60,20 @@ class App extends React.Component {
 
   render() {
     const {pokeInfo, filterName} = this.state;
+
     return (
-      <div className="app">
-        <FilterName 
-          handleFilterName={this.handleFilterName} 
+      <Switch>
+        <Route 
+          exact path='/'
+          render = {() => (
+            <Home 
+              handleFilterName={this.handleFilterName}
+              pokeInfo={pokeInfo}
+              filterName={filterName}
+            />
+          )}
         />
-        <Pokemons 
-          pokeInfo={pokeInfo}
-          filterName={filterName}
-        />
-      </div>
+      </Switch>
     );
   }
 }
