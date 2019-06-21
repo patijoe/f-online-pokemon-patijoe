@@ -47,15 +47,18 @@ class App extends React.Component {
   render() {
     const {pokeInfo, filterName} = this.state;
     return (
-      <div className="app">
-        <FilterName 
-          handleFilterName={this.handleFilterName} 
+      <Switch>
+        <Route 
+          exact path='/'
+          render = {() => (
+            <Home 
+              handleFilterName={this.handleFilterName}
+              pokeInfo={pokeInfo}
+              filterName={filterName}
+            />
+          )}
         />
-        <Pokemons 
-          pokeInfo={pokeInfo}
-          filterName={filterName}
-        />
-      </div>
+      </Switch>
     );
   }
 }
