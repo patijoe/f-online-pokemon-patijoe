@@ -1,7 +1,8 @@
 import React from 'react';
-import Pokemons from './components/Pokemons';
-import FilterName from './components/FilterName';
+import Home from './components/Home';
+import Details from './components/Details';
 import { petition } from './services/Petition';
+import { Switch, Route} from 'react-router-dom';
 
 const ENDPOINT = 'https://pokeapi.co/api/v2/pokemon?limit=25';
 
@@ -44,18 +45,33 @@ class App extends React.Component {
     })
   }
 
+  handleSelect(event) {
+    const pokeValue = event.currentTarget;
+    console.log(pokeValue);
+  }
+
   render() {
     const {pokeInfo, filterName} = this.state;
     return (
       <Switch>
         <Route 
-          exact path='/'
+          exact path = '/'
           render = {() => (
             <Home 
-              handleFilterName={this.handleFilterName}
-              pokeInfo={pokeInfo}
-              filterName={filterName}
+              handleFilterName = {this.handleFilterName}
+              handleSelect = {this.handleSelect}
+              pokeInfo = {pokeInfo}
+              filterName = {filterName}
             />
+          )}
+        />
+        <Route
+          path = "./pokemon/:id"
+          render = { (routerProps => (
+            <Details 
+              match = {routerProps.match}
+            />
+          )
           )}
         />
       </Switch>
