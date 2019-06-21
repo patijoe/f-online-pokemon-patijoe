@@ -27,26 +27,28 @@ class App extends React.Component {
     petition(ENDPOINT)
     .then(data => {
       const promises = data.results.map(item => petition(item.url));
-      console.log('*', data);
       return Promise.all(promises);
     })
-    // .then(results => {
-    //   console.log('----->>>>', results, results[0].species);
-    //   this.setState({
-    //     pokeInfo: results
-    //   })
-    // });
     .then(results => {
-      console.log('----->>>>', results);
+      console.log('----->>>>', results, results[0].species);
+      this.setState({
+        pokeInfo: results
+      })
       const miracles = results.map(item => petition(item.species.url));
       return Promise.all(miracles);
     })
+    // .then(results => {
+    //   console.log('----->>>>', results);
+    //   const miracles = results.map(item => petition(item.species.url));
+    //   return Promise.all(miracles);
+    // })
     .then(resp =>{
       console.log('->', resp);
       this.setState({
-        pokeInfo: resp
+        pokeInfo: [...this.state.pokeInfo, resp]
       })
     });
+    console.log('+++', this.state.pokeInfo);
   }
 
   handleFilterName(event) {
