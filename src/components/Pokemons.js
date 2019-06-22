@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Pokemons extends React.Component {
   render() {
@@ -11,6 +12,7 @@ class Pokemons extends React.Component {
           .map(item => {
             return(
               <li className="item" key={item.id} onClick={handleSelect} >
+                <Link className="item__link" to = {`/pokemon/${item.id}`}>
                 <div className="item__img" style={{backgroundImage: `url(${item.sprites.front_default})`}}></div>
                 <div className="item__down">
                   <h1 className="item__name">{item.name}</h1>
@@ -24,6 +26,7 @@ class Pokemons extends React.Component {
                       })}
                     </ul>
                 </div>
+                </Link>
               </li>
             );
           })}

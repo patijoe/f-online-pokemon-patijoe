@@ -1,4 +1,4 @@
-.pokeList{
+.pokeList {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -6,7 +6,7 @@
   justify-content: center;
 }
 
-.item{
+.item {
   height: 250px;
   width: 250px;
   border: 2px solid grey;
@@ -27,30 +27,35 @@
   background-color: silver;
 }
 
-.item__down{
+.item__down {
   background-color: aliceblue;
   height: 90px;
 }
 
-.item__name{
+.item__name {
   font-family: 'Swanky and Moo Moo', cursive;
   font-size: 35px;
   margin: 0;
   text-align: center;
 }
 
-.item__types__list{
+.item__types__list {
   list-style: none;
   display: flex;
   padding: 0;
   justify-content: space-around;
 }
 
-.type{
+.type {
   font-family: 'Swanky and Moo Moo', cursive;
   font-size: 20px;
   margin: 0;
   border: 1px solid grey;
   border-radius: 5px;
   padding: 0 10px;
+}
+
+.item__link {
+  text-decoration: none;
+  color: gray;
 }

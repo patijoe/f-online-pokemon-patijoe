@@ -55,23 +55,23 @@ class App extends React.Component {
     return (
       <Switch>
         <Route 
-          exact path = '/'
-          render = {() => (
+          exact path='/'
+          render={() => (
             <Home 
-              handleFilterName = {this.handleFilterName}
-              handleSelect = {this.handleSelect}
-              pokeInfo = {pokeInfo}
-              filterName = {filterName}
+              handleFilterName={this.handleFilterName}
+              handleSelect={this.handleSelect}
+              pokeInfo={pokeInfo}
+              filterName={filterName}
             />
           )}
         />
         <Route
-          path = "./pokemon/:id"
-          render = { (routerProps => (
+          path="/pokemon/:id"
+          render={(routerProps) => (
             <Details 
-              match = {routerProps.match}
+              match={routerProps.match}
+              pokeInfo={pokeInfo}
             />
-          )
           )}
         />
       </Switch>
