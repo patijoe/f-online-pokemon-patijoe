@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 150px;
+  margin-top: 75px;
   
 }
 
@@ -66,5 +66,10 @@
   text-decoration: none;
   padding-top: 50px;
   font-family: 'Swanky and Moo Moo', cursive;
-    font-size: 30px;
+  font-size: 30px;
+  transition: font-size ease 1s;
+
+  &:hover {
+    font-size: 60px;
+  }
 }

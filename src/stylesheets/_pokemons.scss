@@ -12,10 +12,15 @@
   border: 2px solid grey;
   border-radius: 5px;
   margin: 10px;
+  transform: scale(1);
+  transition: transform ease 1s;
+
   &:hover {
     box-shadow: (-2px 3px 10px 0 rgba(0, 0, 0, 0.1));
     filter: drop-shadow(5px 5px 10px rgb(156, 154, 154));
-    transition: 0.5s;
+    transition:0.4s;
+    transform: scale(1.08);
+    z-index: 3;
   }
 }
 
@@ -70,4 +75,4 @@
   margin: 20px 0 0;
   color: aliceblue;
   background-color: silver;
-} 
+}

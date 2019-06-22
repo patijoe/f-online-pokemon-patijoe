@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 class Pokemons extends React.Component {
   render() {
-    const {pokeInfo, filterName, handleSelect} = this.props;
+    const {pokeInfo, filterName} = this.props;
 
     return(
       <ul className="pokeList">
@@ -11,7 +11,7 @@ class Pokemons extends React.Component {
           .filter(item => item.name.includes(filterName))
           .map(item => {
             return(
-              <li className="item" key={item.id} onClick={handleSelect} >
+              <li className="item" key={item.id} >
                 <Link className="item__link" to = {`/pokemon/${item.id}`}>
                 <div className="item__img" style={{backgroundImage: `url(${item.sprites.front_default})`}}></div>
                 <div className="item__down">
@@ -27,7 +27,7 @@ class Pokemons extends React.Component {
                   </ul>
                   {item.evolution.evolves_from_species !== null ?
                     <h2 className="item__evolution">Evoluciona de: {item.evolution.evolves_from_species.name}</h2> :
-                  <h2 className="hidden"></h2>
+                  ''
                 }
                 </div>
                 </Link>

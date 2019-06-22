@@ -2,14 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class Details extends React.Component {
+
+  componentWillUnmount() {
+    this.props.handleResetFilter();
+  }
+  
   render() {
-    const {pokeInfo} = this.props;
+    const {pokeInfo,} = this.props;
     const id = this.props.match.params.id;
-
+    
     const newPoke = pokeInfo.find(item => parseInt(id) === item.id);
-
-    console.log('???', pokeInfo, newPoke);
-
+    
     return(
 
       <div className="detail__container">

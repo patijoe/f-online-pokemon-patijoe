@@ -4,7 +4,7 @@ import FilterName from './FilterName';
 
 class Home extends React.Component{
   render() {
-    const {handleFilterName, handleSelect, pokeInfo, filterName} = this.props;
+    const {handleFilterName, pokeInfo, filterName} = this.props;
 
     return(
       <div className="app">
@@ -14,7 +14,6 @@ class Home extends React.Component{
       <Pokemons 
         pokeInfo = {pokeInfo}
         filterName = {filterName}
-        handleSelect = {handleSelect}
       />
     </div>
     );

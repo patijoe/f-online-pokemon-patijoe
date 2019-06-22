@@ -16,6 +16,7 @@ class App extends React.Component {
     }
 
     this.handleFilterName = this.handleFilterName.bind(this);
+    this.handleResetFilter = this.handleResetFilter.bind(this);
   }
 
   componentDidMount() {
@@ -47,16 +48,16 @@ class App extends React.Component {
 
   handleFilterName(event) {
     const valueName = event.currentTarget.value;
-    console.log('^^', valueName);
 
     this.setState({
       filterName: valueName
     })
   }
 
-  handleSelect(event) {
-    const pokeValue = event.currentTarget;
-    console.log(pokeValue);
+  handleResetFilter() {
+    this.setState({
+      filterName: ''
+    })
   }
 
   render() {
@@ -68,7 +69,6 @@ class App extends React.Component {
           render={() => (
             <Home 
               handleFilterName={this.handleFilterName}
-              handleSelect={this.handleSelect}
               pokeInfo={pokeInfo}
               filterName={filterName}
             />
@@ -80,6 +80,7 @@ class App extends React.Component {
             <Details 
               match={routerProps.match}
               pokeInfo={pokeInfo}
+              handleResetFilter={this.handleResetFilter}
             />
           )}
         />
