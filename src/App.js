@@ -23,32 +23,31 @@ class App extends React.Component {
     this.fetchPetition();
   }
 
+  fetchPokemon(url) {
+    
+  }
+
   fetchPetition() {
     petition(ENDPOINT)
     .then(data => {
-      const promises = data.results.map(item => petition(item.url));
+      const promises = data.results.map(item => {
+          return petition(item.url).then(element => {
+            return petition(element.species.url).then(evolution => {
+              const elementComplete = {...element, evolution}
+              return elementComplete;
+            })
+          });
+      })
+          
       return Promise.all(promises);
+      
     })
-    .then(results => {
-      console.log('----->>>>', results, results[0].species);
+    .then(result => {
       this.setState({
-        pokeInfo: results
+        pokeInfo: result
       })
-      const miracles = results.map(item => petition(item.species.url));
-      return Promise.all(miracles);
+      console.log(this.state.pokeInfo);
     })
-    // .then(results => {
-    //   console.log('----->>>>', results);
-    //   const miracles = results.map(item => petition(item.species.url));
-    //   return Promise.all(miracles);
-    // })
-    .then(resp =>{
-      console.log('->', resp);
-      this.setState({
-        pokeInfo: [...this.state.pokeInfo, resp]
-      })
-    });
-    console.log('+++', this.state.pokeInfo);
   }
 
   handleFilterName(event) {
