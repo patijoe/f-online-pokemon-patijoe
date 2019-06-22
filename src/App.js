@@ -45,20 +45,6 @@ class App extends React.Component {
     })
   }
 
-  // fetchPetition() {
-  //   petition(ENDPOINT)
-  //   .then(data => {
-  //     const promises = data.results.map(item => petition(item.url));
-  //     return Promise.all(promises);
-  //   })
-  //   .then(results => {
-  //     console.log('----->>>>', results);
-  //     this.setState({
-  //       pokeInfo: results
-  //     })
-  //   });
-  // }
-
   handleFilterName(event) {
     const valueName = event.currentTarget.value;
     console.log('^^', valueName);

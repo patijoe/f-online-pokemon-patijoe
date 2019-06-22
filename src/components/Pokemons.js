@@ -16,20 +16,25 @@ class Pokemons extends React.Component {
                 <div className="item__img" style={{backgroundImage: `url(${item.sprites.front_default})`}}></div>
                 <div className="item__down">
                   <h1 className="item__name">{item.name}</h1>
-                    <ul className="item__types__list">
-                      {item.types.map((type, index) => {
-                        return(
-                        <li className="types" key={index}>
-                          <h2 className="type">{type.type.name}</h2>
-                        </li>
-                        );
-                      })}
-                    </ul>
+                  <ul className="item__types__list">
+                    {item.types.map((type, index) => {
+                      return(
+                      <li className="types" key={index}>
+                        <h2 className="type">{type.type.name}</h2>
+                      </li>
+                      );
+                    })}
+                  </ul>
+                  {item.evolution.evolves_from_species !== null ?
+                    <h2 className="item__evolution">Evoluciona de: {item.evolution.evolves_from_species.name}</h2> :
+                  <h2 className="hidden"></h2>
+                }
                 </div>
                 </Link>
               </li>
             );
-          })}
+          })
+          }
         </ul>
     );
   }
